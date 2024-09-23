@@ -5,12 +5,14 @@ extends RigidBody2D
 
 var thrust = Vector2.ZERO
 var rotation_dir = 0
+var screensize = Vector2.ZERO
 
 enum {INIT, ALIVE, INVULERABLE, DEAD}
 var state = INIT
 
 func _ready():
 	change_state(ALIVE)
+	screensize = get_viewport_rect().size  # 화면 크기
 	
 func change_state(new_state):
 	match new_state:
@@ -26,7 +28,7 @@ func change_state(new_state):
 
 func _process(delta):
 	get_input()
-
+ 
 # 키 입력 받아 우주선의 추력 켜거나 끄는 함수
 func get_input():
 	thrust = Vector2.ZERO
@@ -43,3 +45,20 @@ func get_input():
 func _physics_process(delta):
 	constant_force = thrust
 	constant_torque = rotation_dir * spin_power
+	
+	## Area2D 였다면 아래 코드로 screen wrap을 사용할 수 있지만, 물리엔진은 불가능
+	#if position.x > screensize.x:
+		#position.x = 0
+	#if position.x < 0:
+		#position.x = screensize.x
+	#if position.y > screensize.y:
+		#position.y = 0
+	#if position.y < 0:
+		#position.y = screensize.y
+		
+func _integrate_forces(physics_state):
+	var xform = physics_state.transform
+	# wrapf(value, min, max)
+	xform.origin.x = wrapf(xform.origin.x, 0, screensize.x)
+	xform.origin.y = wrapf(xform.origin.y, 0, screensize.y)
+	physics_state.transform = xform
