@@ -2,10 +2,13 @@ extends RigidBody2D
 
 @export var engine_power = 500
 @export var spin_power = 8000
+@export var bullet_scene : PackedScene
+@export var fire_rate = 0.25
 
 var thrust = Vector2.ZERO
 var rotation_dir = 0
 var screensize = Vector2.ZERO
+var can_shoot = true
 
 enum {INIT, ALIVE, INVULERABLE, DEAD}
 var state = INIT
@@ -13,6 +16,7 @@ var state = INIT
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size  # 화면 크기
+	$GunColldown.wait_time = fire_rate
 	
 func change_state(new_state):
 	match new_state:
@@ -37,11 +41,23 @@ func get_input():
 	if Input.is_action_pressed("thrust"):
 		# transform 은 객체의 현재 위치, 회전, 크기 정보 
 		thrust = transform.x * engine_power
-	
+	if Input.is_action_pressed("shoot") and can_shoot:
+		shoot()
 	# -1: 왼쪽 / 1: 오른쪽 / 0: 아무입력 없음	
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
+
+
+func shoot():
+	if state == INVULERABLE: return
 	
+	can_shoot = false
+	$GunColldown.start()
 	
+	var bullet = bullet_scene.instantiate()
+	get_tree().root.add_child(bullet)
+	bullet.start($Muzzle.global_transform)  # 전역 좌표 부여.
+
+
 func _physics_process(delta):
 	constant_force = thrust
 	constant_torque = rotation_dir * spin_power
@@ -55,10 +71,14 @@ func _physics_process(delta):
 		#position.y = 0
 	#if position.y < 0:
 		#position.y = screensize.y
-		
+
 func _integrate_forces(physics_state):
 	var xform = physics_state.transform
 	# wrapf(value, min, max)
 	xform.origin.x = wrapf(xform.origin.x, 0, screensize.x)
 	xform.origin.y = wrapf(xform.origin.y, 0, screensize.y)
 	physics_state.transform = xform
+	
+
+func _on_gun_colldown_timeout():
+	can_shoot = true
