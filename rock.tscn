@@ -6,11 +6,12 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ooynl"]
 bounce = 1.0
 
-[node name="Rock" type="RigidBody2D"]
+[node name="Rock" type="RigidBody2D" groups=["rocks"]]
 physics_material_override = SubResource("PhysicsMaterial_ooynl")
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_5wkmx")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_amnfn")

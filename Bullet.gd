@@ -15,6 +15,7 @@ func _process(delta):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
+# 총알 body entered 시그널 연결
 func _on_body_entered(body):
 	# todo: 추후 만들어질 바위 씬을 위한 코드 
 	if body.is_in_group("rocks"):

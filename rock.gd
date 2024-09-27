@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-
 var screensize = Vector2.ZERO
 var size
 var radius
