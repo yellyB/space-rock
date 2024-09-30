@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ypn7larn0yym"]
+[gd_scene load_steps=5 format=3 uid="uid://ypn7larn0yym"]
 
 [ext_resource type="Script" path="res://rock.gd" id="1_5wkmx"]
 [ext_resource type="Texture2D" uid="uid://0mdyh4r3652d" path="res://assets/rock.png" id="1_amnfn"]
+[ext_resource type="PackedScene" uid="uid://b0vl51e27h8f1" path="res://explosion.tscn" id="3_ms8kw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ooynl"]
 bounce = 1.0
@@ -17,3 +18,8 @@ metadata/_edit_group_ = true
 texture = ExtResource("1_amnfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Explosion" parent="." instance=ExtResource("3_ms8kw")]
+visible = false
+
+[connection signal="exploded" from="." to="." method="_on_exploded"]
