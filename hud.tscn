@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://keatncxkfecb"]
+
+[ext_resource type="FontFile" uid="uid://8mhlaehre1uc" path="res://assets/kenvector_future_thin.ttf" id="1_rjwap"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gr55a"]
+font = ExtResource("1_rjwap")
+font_size = 64
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_gr55a")
+
+[node name="LivesCounter" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
