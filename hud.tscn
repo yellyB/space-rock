@@ -64,29 +64,26 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -36.0
-offset_bottom = 36.0
+offset_top = -118.5
+offset_bottom = 118.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
 theme_override_constants/separation = 100
 
 [node name="Message" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "Space Rocks!"
 label_settings = SubResource("LabelSettings_fhc20")
 horizontal_alignment = 1
 
-[node name="StartButton" type="TextureButton" parent="VBoxContainer/Message"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.5
-offset_right = 124.5
-offset_bottom = 65.0
-grow_horizontal = 2
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_v3gfy")
 texture_hover = ExtResource("4_55n6a")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="VBoxContainer/Message/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
