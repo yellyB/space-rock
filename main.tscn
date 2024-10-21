@@ -8,9 +8,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_yi83l"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -848, -480, 0, 0, 0, 0, 1152, -472, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, -848, 648, 0, 0, 0, 0, -848, -480)
+"points": PackedVector2Array(0, 0, 0, 0, -848, -480, 0, 0, 0, 0, -514.679, -486.1, 0, 0, 0, 0, -209.898, -476.576, 0, 0, 0, 0, 1152, -472, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, -848, 648, 0, 0, 0, 0, -848, -480)
 }
-point_count = 5
+point_count = 7
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0cm6a")
@@ -18,18 +18,19 @@ rock_scene = ExtResource("2_y6rpk")
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(154.57, 90.7499)
+position = Vector2(1012, 575)
 scale = Vector2(1.0567, 1.06343)
 texture = ExtResource("1_n8kmq")
 
 [node name="Player" parent="." instance=ExtResource("2_ia08n")]
 
 [node name="RockPath" type="Path2D" parent="."]
+position = Vector2(863.884, 495.515)
 curve = SubResource("Curve2D_yi83l")
 
 [node name="RockSpawn" type="PathFollow2D" parent="RockPath"]
 position = Vector2(-848, -480)
-rotation = 0.00399998
+rotation = -0.0182991
 
 [node name="HUD" parent="." instance=ExtResource("5_henfq")]
 
