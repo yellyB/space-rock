@@ -30,8 +30,9 @@ curve = SubResource("Curve2D_yi83l")
 
 [node name="RockSpawn" type="PathFollow2D" parent="RockPath"]
 position = Vector2(-848, -480)
-rotation = -0.0182991
+rotation = -0.0182987
 
 [node name="HUD" parent="." instance=ExtResource("5_henfq")]
 
+[connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

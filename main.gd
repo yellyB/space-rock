@@ -27,7 +27,7 @@ func new_game():
 	score = 0
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready!")
-	#$Player.reset()
+	$Player.reset()
 	await $HUD/Timer.timeout
 	playing = true
 	
