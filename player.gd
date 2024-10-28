@@ -77,6 +77,12 @@ func reset():
 	lives = 3
 	change_state(ALIVE)
 
+func explode():
+	$Explosion.show()
+	$Explosion/AnimationPlayer.play("explosion")
+	await $Explosion/AnimationPlayer.animation_finished
+	$Explosion.hide()
+
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size  # 화면 크기
@@ -116,3 +122,10 @@ func _on_gun_colldown_timeout():
 
 func _on_invulnerability_timer_timeout():
 	change_state(ALIVE)
+
+
+func _on_body_entered(body):
+	if body.is_in_group("rocks"):
+		body.explode()
+		lives -= 1
+		explode()
