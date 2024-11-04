@@ -61,3 +61,15 @@ func _process(delta):
 	if not playing: return
 	if get_tree().get_nodes_in_group("rocks").size() == 0:
 		new_level()
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if not playing: return
+		get_tree().paused = not get_tree().paused
+		var message = $HUD/VBoxContainer/Message
+		if get_tree().paused:
+			message.text = "Paused"
+			message.show()
+		else:
+			message.text = ""
+			message.hide()

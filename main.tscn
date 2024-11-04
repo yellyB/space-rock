@@ -13,6 +13,7 @@ _data = {
 point_count = 7
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_0cm6a")
 rock_scene = ExtResource("2_y6rpk")
 metadata/_edit_group_ = true
