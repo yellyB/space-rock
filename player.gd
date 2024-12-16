@@ -57,7 +57,7 @@ func shoot():
 	if state == INVULNERABLE: return
 	
 	can_shoot = false
-	$GunColldown.start()
+	$GunCooldown.start()
 	
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
@@ -86,7 +86,7 @@ func explode():
 func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size  # 화면 크기
-	$GunColldown.wait_time = fire_rate
+	$GunCooldown.wait_time = fire_rate
 	
 func _process(delta):
 	get_input()

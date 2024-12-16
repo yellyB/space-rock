@@ -19,7 +19,7 @@ func _physics_process(delta):
 	rotation += deg_to_rad(rotation_speed) * delta
 	follow.progress += speed * delta  # progress는 경로에서 현재 위치. 경로 따라 이동시키기
 	position = follow.global_position
-	if follow.progress_ratio >= 1:  # progress_ratio가 1이면 경로의 끝에 도달한 것.
+	if follow.progress_ratio >= 1:  # progress_ratio가 1이면 경로의 끝에 도달한 것. (0~1)
 		queue_free()
 
 func _on_gun_cooldown_timeout():
