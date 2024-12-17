@@ -20,3 +20,8 @@ func _on_body_entered(body):
 	if body.is_in_group("rocks"):
 		body.explode()
 		queue_free()
+
+# enemy를 사격하는 경우, enemy는 Area2D라 위의 body_entered 트리거 하지 않는다. 때문에 area_entered 따로 만들어줌
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		area.take_damage(1)
