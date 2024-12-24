@@ -31,6 +31,7 @@ func new_game():
 	$Player.reset()
 	await $HUD/Timer.timeout
 	playing = true
+	$Music.play()
 	
 func new_level():
 	level += 1
@@ -38,12 +39,15 @@ func new_level():
 	for i in level:
 		spawn_rock(3)
 	$EnemyTimer.start(randf_range(5, 10))
+	$LevelupSound.play()
 
 func game_over():
 	playing = false
 	$HUD.game_over()
+	$Music.stop()
 	
 func _on_rock_exploded(size, radius, pos, vel):
+	$ExplosionSound.play()
 	if size <= 1:
 		return
 	for offset in [-1, 1]:  # 2개 바위 생성하고, 서로 반대 방향 향할수 있도록 하기 위함

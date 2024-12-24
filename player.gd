@@ -40,6 +40,7 @@ func change_state(new_state):
 			$Sprite2D.hide()
 			linear_velocity = Vector2.ZERO
 			dead.emit()
+			$EngineSound.stop()
 	state = new_state
  
 # 키 입력 받아 우주선의 추력 켜거나 끄는 함수
@@ -50,6 +51,10 @@ func get_input():
 	if Input.is_action_pressed("thrust"):
 		# transform 은 객체의 현재 위치, 회전, 크기 정보 
 		thrust = transform.x * engine_power
+		if not $EngineSound.playing:
+			$EngineSound.play()
+	else:
+		$EngineSound.stop()
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
 	# -1: 왼쪽 / 1: 오른쪽 / 0: 아무입력 없음	
@@ -65,6 +70,8 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
 	bullet.start($Muzzle.global_transform)  # 전역 좌표 부여.
+	
+	$LaserSound.play()
 
 func set_lives(value):
 	lives = value
