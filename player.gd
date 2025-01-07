@@ -45,10 +45,12 @@ func change_state(new_state):
  
 # 키 입력 받아 우주선의 추력 켜거나 끄는 함수
 func get_input():
+	$Exhaust.emitting = false
 	thrust = Vector2.ZERO
 	if state in [DEAD, INIT]:
 		return
 	if Input.is_action_pressed("thrust"):
+		$Exhaust.emitting = true
 		# transform 은 객체의 현재 위치, 회전, 크기 정보 
 		thrust = transform.x * engine_power
 		if not $EngineSound.playing:

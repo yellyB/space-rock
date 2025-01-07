@@ -57,7 +57,7 @@ stream = ExtResource("5_rwe40")
 stream = ExtResource("6_jofri")
 volume_db = -10.0
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Exhaust" type="CPUParticles2D" parent="."]
 show_behind_parent = true
 position = Vector2(-28, 0)
 rotation = 3.14159
