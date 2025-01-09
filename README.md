@@ -1,4 +1,7 @@
 ## 우주 배경 슈팅 게임  
+
+![스크린샷 2025-01-09 오후 5 09 11](https://github.com/user-attachments/assets/1eca305f-1759-47d3-817f-d1ff8594e52f)
+
 :rocket: https://yellyb.github.io/space-rock/
 
 <br>
@@ -20,3 +23,4 @@
 - Random Path Setup Using Path2D Node 
 - Animation Effects Using AnimationPlayer Node (e.g., Explosion Animations)
 - Visual Effects Implemented Using CPUParticles2D Node
+
