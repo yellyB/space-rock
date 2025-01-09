@@ -47,7 +47,7 @@ func take_damage(amount):
 		
 func explode():
 	speed = 0
-	$Explosion.play()
+	$Explosion.show()
 	$GunCooldown.stop()
 	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite2D.hide()
