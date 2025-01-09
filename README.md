@@ -1,4 +1,4 @@
-## 우주 배경 슈팅 게임  
+## Space-Themed Shooting Game
 
 ![스크린샷 2025-01-09 오후 5 09 11](https://github.com/user-attachments/assets/1eca305f-1759-47d3-817f-d1ff8594e52f)
 
